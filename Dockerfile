@@ -9,7 +9,7 @@ RUN apk add --update \
   build-base \
   ca-certificates \
   python3-dev \
-  python3-dev
+  python3-pip
 
 RUN pip install --upgrade \
   distribute \
