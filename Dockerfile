@@ -8,21 +8,29 @@ MAINTAINER Nabeel S <hi@nabs.io>
 RUN apk add --update \
   build-base \
   ca-certificates \
+  python3 \
   python3-dev \
   python3-pip
 
+RUN apk cache clean
+
+RUN cd /usr/bin \
+  && ln -sf python3.5 python \
+  && ln -sf pip3.5 pip
+  
 RUN pip install --upgrade \
   distribute \
   pip \
   chaperone
   
 RUN mkdir -p /etc/chaperone.d
-COPY chaperone.conf /etc/chaperone.d/chaperone.conf
+COPY scripts/chaperone.conf /etc/chaperone.d/chaperone.conf
 
 # configure the app
 RUN mkdir -p $APP_HOME
 WORKDIR $APP_HOME
+
 ONBUILD COPY . $APP_HOME
 ONBUILD RUN pip install -r requirements.txt
 
-ENTRYPOINT ["/usr/bin/chaperone"]
+CMD /usr/bin/chaperone
