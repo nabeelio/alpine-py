@@ -21,7 +21,9 @@ RUN pip install --upgrade \
   chaperone \
   wheel>0.25.0 \
   pycrypto==2.6.1 \
-  pbr>=0.11
+  pyyaml==3.11 \
+  pytest==2.9.2 \
+  sortedcontainers==1.5.3
   
 RUN mkdir -p /etc/chaperone.d
 COPY scripts/chaperone.conf /etc/chaperone.d/chaperone.conf
