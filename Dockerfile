@@ -7,6 +7,8 @@ MAINTAINER Nabeel S <hi@nabs.io>
 
 ENV APP_HOME /opt
 
+RUN echo "App home: $APP_HOME"
+
 RUN apk add --update build-base ca-certificates python3 python3-dev
 
 RUN cd /usr/bin \
