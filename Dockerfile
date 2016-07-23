@@ -5,12 +5,7 @@
 FROM alpine:3.4
 MAINTAINER Nabeel S <hi@nabs.io>
 
-RUN apk add --update \
-  build-base \
-  ca-certificates \
-  python3 \
-  python3-dev \
-  python3-pip
+RUN apk add --update build-base ca-certificates python3 python3-dev
 
 RUN apk cache clean
 
