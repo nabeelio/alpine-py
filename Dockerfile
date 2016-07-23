@@ -7,8 +7,6 @@ MAINTAINER Nabeel S <hi@nabs.io>
 
 RUN apk add --update build-base ca-certificates python3 python3-dev
 
-RUN apk cache clean
-
 RUN cd /usr/bin \
   && ln -sf python3.5 python \
   && ln -sf pip3.5 pip
