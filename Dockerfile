@@ -28,4 +28,4 @@ WORKDIR $APP_HOME
 ONBUILD COPY . $APP_HOME
 ONBUILD RUN pip install -r requirements.txt
 
-ENTRYPOINT ["/usr/bin/chaperone"]
+ENTRYPOINT /usr/bin/chaperone --force
