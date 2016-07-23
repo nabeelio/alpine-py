@@ -25,14 +25,13 @@ RUN pip install --upgrade \
   pytest==2.9.2 \
   sortedcontainers==1.5.3
   
-RUN mkdir -p /etc/chaperone.d
-COPY scripts/chaperone.conf /etc/chaperone.d/chaperone.conf
-
-# configure the app
 RUN mkdir -p $APP_HOME
+RUN mkdir -p /etc/chaperone.d
+
 WORKDIR $APP_HOME
 
 ONBUILD COPY . $APP_HOME
 ONBUILD RUN pip install -r requirements.txt
+ONBUILD COPY scripts/chaperone.conf /etc/chaperone.d/chaperone.conf
 
-CMD /usr/bin/chaperone --force
+ENTRYPOINT /usr/bin/chaperone --force
