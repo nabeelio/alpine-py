@@ -18,7 +18,10 @@ RUN cd /usr/bin \
 RUN pip install --upgrade \
   distribute \
   pip \
-  chaperone
+  chaperone \
+  wheel>0.25.0 \
+  pycrypto==2.6.1 \
+  pbr>=0.11
   
 RUN mkdir -p /etc/chaperone.d
 COPY scripts/chaperone.conf /etc/chaperone.d/chaperone.conf
