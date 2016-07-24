@@ -5,10 +5,6 @@
 FROM alpine:3.4
 MAINTAINER Nabeel S <hi@nabs.io>
 
-ENV APP_HOME /opt
-
-RUN echo "App home: $APP_HOME"
-
 RUN apk add --update build-base ca-certificates python3 python3-dev
 
 RUN cd /usr/bin \
@@ -26,12 +22,4 @@ RUN pip install --upgrade \
   sortedcontainers==1.5.3
 
 RUN mkdir -p /etc/chaperone.d
-
-RUN mkdir -p $APP_HOME
-ONBUILD WORKDIR $APP_HOME
-
-ONBUILD COPY . $APP_HOME
-ONBUILD RUN pip install -r requirements.txt
-ONBUILD COPY scripts/chaperone.conf /etc/chaperone.d/chaperone.conf
-
 ENTRYPOINT /usr/bin/chaperone --force
