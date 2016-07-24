@@ -24,14 +24,14 @@ RUN pip install --upgrade \
   pyyaml==3.11 \
   pytest==2.9.2 \
   sortedcontainers==1.5.3
-  
-RUN mkdir -p $APP_HOME
+
 RUN mkdir -p /etc/chaperone.d
+
+RUN mkdir -p $APP_HOME
+ONBUILD WORKDIR $APP_HOME
 
 ONBUILD COPY . $APP_HOME
 ONBUILD RUN pip install -r requirements.txt
 ONBUILD COPY scripts/chaperone.conf /etc/chaperone.d/chaperone.conf
-
-ONBUILD WORKDIR $APP_HOME
 
 ENTRYPOINT /usr/bin/chaperone --force
