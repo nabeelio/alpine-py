@@ -22,4 +22,3 @@ RUN pip install --upgrade \
   sortedcontainers==1.5.3
 
 RUN mkdir -p /etc/chaperone.d
-ENTRYPOINT /usr/bin/chaperone --force
