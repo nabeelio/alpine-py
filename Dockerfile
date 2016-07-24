@@ -28,10 +28,10 @@ RUN pip install --upgrade \
 RUN mkdir -p $APP_HOME
 RUN mkdir -p /etc/chaperone.d
 
-WORKDIR $APP_HOME
-
 ONBUILD COPY . $APP_HOME
 ONBUILD RUN pip install -r requirements.txt
 ONBUILD COPY scripts/chaperone.conf /etc/chaperone.d/chaperone.conf
+
+ONBUILD WORKDIR $APP_HOME
 
 ENTRYPOINT /usr/bin/chaperone --force
