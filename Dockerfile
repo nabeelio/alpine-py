@@ -11,7 +11,7 @@ RUN cd /usr/bin \
   && ln -sf python3.5 python \
   && ln -sf pip3.5 pip
   
-RUN pip install --upgrade \
+RUN pip install --no-cache-dir --upgrade \
   distribute \
   pip \
   chaperone \
@@ -22,3 +22,4 @@ RUN pip install --upgrade \
   sortedcontainers==1.5.3
 
 RUN mkdir -p /etc/chaperone.d
+RUN rm -rf /tmp/*
