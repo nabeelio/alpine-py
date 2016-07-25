@@ -12,9 +12,9 @@ RUN cd /usr/bin \
   && ln -sf pip3.5 pip
   
 RUN pip install --no-cache-dir --upgrade \
+  pip \
   wheel>0.25.0 \
   distribute \
-  pip \
   chaperone \
   pycrypto==2.6.1 \
   pyyaml==3.11 \
