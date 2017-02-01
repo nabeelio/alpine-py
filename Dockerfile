@@ -5,7 +5,7 @@
 FROM alpine:3.4
 MAINTAINER Nabeel S <hi@nabs.io>
 
-RUN apk add --update build-base ca-certificates python3 python3-dev
+RUN apk add --update build-base ca-certificates python3 python3-dev ffmpeg
 
 RUN cd /usr/bin \
   && ln -sf python3.5 python \
@@ -23,3 +23,4 @@ RUN pip install --no-cache-dir --upgrade \
 
 RUN mkdir -p /etc/chaperone.d
 RUN rm -rf /tmp/*
+RUN rm -rf /var/cache/*
